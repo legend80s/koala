@@ -11,15 +11,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       theme: ThemeData(
-//          primaryColor: Colors.white,
         primaryColor: new Color(0xfff8faf8),
-//        primaryIconTheme: IconThemeData(color: Colors.black),
         primaryTextTheme: TextTheme(
           title: TextStyle(color: Colors.black, fontFamily: "Lato")
         )
       ),
 
-      home: new Home(),
+      home: new Home(title: Text('🐨 Koala')),
     );
   }
 }
