@@ -1,6 +1,6 @@
-# myapp
+# koala
 
-A new Flutter project.
+Online ordering takeaway platform powered by Flutter.
 
 ## Getting Started
 
