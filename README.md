@@ -1,4 +1,4 @@
-# koala
+# Koala 🐨 🐨
 
 Online ordering takeaway platform powered by Flutter.
 
