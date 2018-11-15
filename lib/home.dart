@@ -4,7 +4,7 @@ import 'package:myapp/home_app_bar.dart';
 import 'package:myapp/random_words.dart' show RandomWords, biggerFont;
 
 class Home extends StatelessWidget {
-  final title;
+  final Text title;
   final _randomWords = new RandomWords();
 
   Home({ this.title });
