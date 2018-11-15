@@ -9,9 +9,8 @@ For help getting started with Flutter, view our online
 
 ## Building Layouts
 
-This is a guide to building layouts in Flutter. You’ll build the layout for the following screenshot:
+This is a guide to building layouts in Flutter, [documentation](https://flutter.io/docs/development/ui/layout). You’ll build the layout for the following screenshot:
 
-![finished lakes app that you'll build in 'Building a Layout'](https://flutter.io/docs/development/ui/layout/images/lakes.jpg)
+<p align="center"><img src="https://flutter.io/docs/development/ui/layout/images/lakes.jpg" alt="finished lakes app that you'll build in 'Building a Layout'" /></p>
 
-[documentation](https://flutter.io/docs/development/ui/layout)
 
