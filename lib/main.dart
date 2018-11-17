@@ -12,7 +12,7 @@ final Widget titleSection = Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Container(
+            Padding(
               padding: EdgeInsets.only(bottom: 8),
               child: Text('Oechinen Lake Campground', style: TextStyle(fontWeight: FontWeight.bold),),
             ),
@@ -21,10 +21,8 @@ final Widget titleSection = Container(
         )
       ),
 
-      Container(
-        margin: EdgeInsets.only(right: 4),
-        child: Icon(Icons.star, color: Colors.red),
-      ),
+      Icon(Icons.star, color: Colors.red),
+      SizedBox(width: 4),
       Text('41'),
     ],
   ),
@@ -84,7 +82,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo - Building Layouts',
       debugShowCheckedModeBanner: false,
-      showSemanticsDebugger: false,
+//      showSemanticsDebugger: true,
 
       home: Scaffold(
         appBar: AppBar(title: Text('Top Lakes'), centerTitle: true),
