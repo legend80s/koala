@@ -1,47 +1,84 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/home_app_bar.dart';
-import 'package:myapp/random_words.dart' show RandomWords, biggerFont;
+import 'package:myapp/foods.dart';
 
-class Home extends StatelessWidget {
-  final Text title;
-  final _randomWords = new RandomWords();
+class Home extends StatefulWidget {
+  Home({Key key, this.title}) : super(key: key);
+  final String title;
 
-  Home({ this.title });
+  @override
+  _HomeState createState() => new _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  PageController _pageController;
+  var _page = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: homeAppBar(title: title, onPress: () => this._pushSaved(context)),
-      body: _randomWords
+    return new Scaffold(
+      appBar: AppBar(
+        title: new Text(widget.title),
+      ),
+      body: PageView(
+        children: <Widget>[
+          new Foods(),
+          Container(
+            color: Colors.redAccent,
+          ),
+          Container(
+            color: Colors.blueAccent,
+          ),
+        ],
+        controller: _pageController,
+        onPageChanged: onPageChanged,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.restaurant_menu),
+            title: Text("菜品"),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.location_city),
+            title: Text("餐厅"),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            title: Text("收藏"),
+          ),
+        ],
+        onTap: navigationTapped,
+        currentIndex: _page,
+      ),
     );
   }
 
-  void _pushSaved(BuildContext context) {
-    final Iterable<ListTile> tiles = _randomWords.saved.map((WordPair pair) =>
-      ListTile(
-        contentPadding: EdgeInsets.all(14.0),
-        title: Text(
-          pair.asPascalCase,
-          style: biggerFont
-        )
-      )
+  ///
+  /// Bottom Navigation tap listener
+  ///
+  void navigationTapped(int page) {
+    _pageController.animateToPage(
+      page,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeIn,
     );
+  }
 
-    final List<Widget> divided = ListTile.divideTiles(
-      tiles: tiles,
-      context: context
-    ).toList();
+  void onPageChanged(int page) {
+    setState(() {
+      this._page = page;
+    });
+  }
 
-    Navigator.of(context)
-      .push(new MaterialPageRoute(builder: (BuildContext context) {
-      return new Scaffold(
-        appBar: AppBar(
-          title: Text('Saved Suggestions'),
-          // backgroundColor: new Color(0xfff8faf8),
-        ),
-        body: new ListView(children: divided),
-      );
-    }));
+  @override
+  void initState() {
+    super.initState();
+    _pageController = new PageController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.dispose();
   }
 }
