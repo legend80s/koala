@@ -1,35 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/fullscreen_image_page.dart';
+import 'package:myapp/models/food_model.dart';
 import 'package:myapp/models/image_model.dart';
-
-class StoreModel {
-  final String name;
-  final String distance;
-
-  StoreModel({ @required this.name, @required this.distance });
-
-  factory StoreModel.fromJson(Map<String, dynamic> storeJson) {
-    return StoreModel(name: storeJson['name'], distance: storeJson['distance']);
-  }
-}
-
-class FoodModel {
-  final String name;
-  final StoreModel store;
-  final int orderedCount;
-  final List<ImageModel> images;
-
-  FoodModel({ @required this.name, @required this.store, @required this.orderedCount, @required this.images });
-
-  factory FoodModel.fromJson(Map<String, dynamic> foodJson) {
-    return FoodModel(
-      name: foodJson['name'],
-      orderedCount: foodJson['ordered_count'],
-      store: StoreModel.fromJson(foodJson['store']),
-      images: List.from(foodJson['images']).map((image) => ImageModel.fromJson(image)).toList(),
-    );
-  }
-}
+import 'package:myapp/pages/checkout_page.dart';
 
 typedef onTapCallback = void Function(ImageModel);
 
@@ -97,13 +70,16 @@ class FoodDetail extends StatelessWidget {
     );
   }
 
-  static Widget _renderActions(FoodModel food) {
+  static Widget _renderActions(FoodModel food, BuildContext context) {
     return Container(
       height: 40,
       margin: EdgeInsets.fromLTRB(0, 40, 4, 0),
       child: RaisedButton(
         onPressed: () {
           print('goto order');
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return CheckoutPage(food);
+          }));
         },
         color: Color(0xffd4edda),
 //        color: Color(0xffc3e6cb),
@@ -130,7 +106,7 @@ class FoodDetail extends StatelessWidget {
             }));
           }),
           _renderDetail(food),
-          _renderActions(food),
+          _renderActions(food, context),
         ],
       )
     );

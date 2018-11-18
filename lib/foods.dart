@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:myapp/food_detail.dart';
+import 'package:myapp/models/food_model.dart';
 
 // TODO typedef food = Map<string, string>
 // TODO String | Number
