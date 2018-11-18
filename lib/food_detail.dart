@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/fullscreen_image_page.dart';
+import 'package:myapp/models/image_model.dart';
 
 class StoreModel {
   final String name;
@@ -8,17 +10,6 @@ class StoreModel {
 
   factory StoreModel.fromJson(Map<String, dynamic> storeJson) {
     return StoreModel(name: storeJson['name'], distance: storeJson['distance']);
-  }
-}
-
-class ImageModel {
-  final String src;
-  final num ratio;
-
-  ImageModel({ @required this.src, @required this.ratio });
-
-  factory ImageModel.fromJson(Map<String, dynamic> imageJson) {
-    return ImageModel(src: imageJson['src'], ratio: imageJson['ratio']);
   }
 }
 
@@ -40,19 +31,21 @@ class FoodModel {
   }
 }
 
+typedef onTapCallback = void Function(ImageModel);
+
 class FoodDetail extends StatelessWidget {
   final FoodModel food;
 
   FoodDetail(this.food);
 
-  static Widget _renderImages(List<ImageModel> images) {
+  static Widget _renderImages(List<ImageModel> images, onTapCallback onTap) {
     Widget gallery;
 
     // Make single image cover the screen
     if (images.length <= 1) {
       gallery = GestureDetector(
         onTap: () {
-          print('image ${images[0]} tapped!');
+          onTap(images[0]);
         },
         child: Container(
           decoration: BoxDecoration(
@@ -75,7 +68,7 @@ class FoodDetail extends StatelessWidget {
 
             child: new GestureDetector(
               onTap: () {
-                print('$img tapped!');
+                onTap(img);
               },
               child: Container(
                 child: ClipRRect(
@@ -130,7 +123,12 @@ class FoodDetail extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.fromLTRB(4, 4, food.images.length > 1 ? 0 : 4, 4),
         children: <Widget>[
-          _renderImages(food.images),
+          _renderImages(food.images, (ImageModel img) {
+            print('$img tapped!');
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return FullscreenImage(img);
+            }));
+          }),
           _renderDetail(food),
           _renderActions(food),
         ],
