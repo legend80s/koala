@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:myapp/food_detail.dart';
 
 // TODO typedef food = Map<string, string>
 // TODO String | Number
@@ -65,27 +66,32 @@ List<StaggeredTile> _staggeredTiles = foods
   .toList();
 
 List<Widget> _tiles = foods.map((food) {
-  return _ImageTile(food['image']['src']);
+  return _FoodTile(food);
 }).toList();
 
-class _ImageTile extends StatelessWidget {
-  const _ImageTile(this.gridImage);
+class _FoodTile extends StatelessWidget {
+  const _FoodTile(this.food);
 
-  final gridImage;
+  final dynamic food;
 
   @override
   Widget build(BuildContext context) {
+    final FoodModel food = FoodModel.fromJson(this.food);
+    final src = food.image.src;
+
     return new Card(
       color: const Color(0x00000000),
       elevation: 3.0,
       child: new GestureDetector(
         onTap: () {
-          print("hello");
+          Navigator.push(context, new MaterialPageRoute(builder: (context) {
+            return new FoodDetail(food);
+          }));
         },
         child: new Container(
           decoration: new BoxDecoration(
             image: new DecorationImage(
-              image: new NetworkImage(gridImage),
+              image: new NetworkImage(src),
               fit: BoxFit.cover,
             ),
             borderRadius: new BorderRadius.all(const Radius.circular(10.0)),
