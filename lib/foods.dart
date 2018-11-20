@@ -99,6 +99,7 @@ class _FoodTile extends StatelessWidget {
     return new Card(
       color: const Color(0x00000000),
       elevation: 3.0,
+      margin: EdgeInsets.all(2),
       child: new GestureDetector(
         onTap: () {
           Navigator.push(context, new MaterialPageRoute(builder: (context) {
@@ -128,8 +129,8 @@ class Foods extends StatelessWidget {
         crossAxisCount: 2,
         staggeredTiles: _staggeredTiles,
         children: _tiles,
-        mainAxisSpacing: 4.0,
-        crossAxisSpacing: 2.0,
+        mainAxisSpacing: 0,
+        crossAxisSpacing: 0,
       )
     );
   }

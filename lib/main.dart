@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
 //        )
 //      ),
 
-      home: new Home(title: '🐨 Koala'),
+      home: new Home(title: 'Koala'),
     );
   }
 }
