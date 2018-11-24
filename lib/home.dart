@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/foods.dart';
+import 'package:myapp/pages/foods.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.title}) : super(key: key);
@@ -18,6 +18,13 @@ class _HomeState extends State<Home> {
     return new Scaffold(
       appBar: AppBar(
         title: new Text(widget.title),
+      ),
+      floatingActionButton: Theme(
+        data: Theme.of(context).copyWith(),
+        child: FloatingActionButton(
+          onPressed: () => {},
+          child: Icon(Icons.add_shopping_cart),
+        ),
       ),
       body: PageView(
         children: <Widget>[

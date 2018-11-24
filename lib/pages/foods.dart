@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:myapp/food_detail.dart';
+import 'package:myapp/pages/food_detail.dart';
 import 'package:myapp/models/food_model.dart';
 
 // TODO typedef food = Map<string, string>
@@ -8,11 +8,30 @@ import 'package:myapp/models/food_model.dart';
 // not List<Map<String, Object>> foods otherwise `The operator '[]' isn't defined for the class 'Object'.`
 const List<Map<String, dynamic>> foods = [
   {
-    'name': 'Chocolate Bread Bars',
+    'name': '小炒黄牛肉',
     'ordered_count': 35,
+    'price': {
+      'unit': '¥',
+      'value': 18,
+    },
     'store': {
-      'name': '法式面包店',
+      'name': '河里活老湖南龙虾馆',
+      'tags': ['中餐厅', '湘菜馆'],
+      'phone_number': '0755-86603400',
+      'location': '深圳市南山区南商路68-7',
       'distance': '1.2 km',
+
+      'images': [
+        {
+          'src': 'http://5b0988e595225.cdn.sohucs.com/images/20180616/b695540169e24a69bf3a29c2c716056e.jpeg',
+        },
+        {
+          'src': 'http://5b0988e595225.cdn.sohucs.com/images/20180616/a7b4d2419d104735941a00e0333e3e95.jpeg',
+        },
+        {
+          'src': 'http://5b0988e595225.cdn.sohucs.com/images/20180616/8c1554a4b57548aebf554ed691c353a4.jpeg',
+        },
+      ],
     },
     'images': [
       {
@@ -32,6 +51,10 @@ const List<Map<String, dynamic>> foods = [
   {
     'name': 'Breads',
     'ordered_count': 15,
+    'price': {
+      'unit': '¥',
+      'value': 20,
+    },
     'store': {
       'name': '法式面包店',
       'distance': '1.1 km',
@@ -46,6 +69,10 @@ const List<Map<String, dynamic>> foods = [
   {
     'name': 'Tea & Bread',
     'ordered_count': 15,
+    'price': {
+      'unit': '¥',
+      'value': 22.5,
+    },
     'store': {
       'name': '法式面包店',
       'distance': '2.0 km',
@@ -60,6 +87,10 @@ const List<Map<String, dynamic>> foods = [
   {
     'name': 'Bread with Melt Chocolate',
     'ordered_count': 15,
+    'price': {
+      'unit': '¥',
+      'value': 24,
+    },
     'store': {
       'name': '法式面包店',
       'distance': '2.0 km',

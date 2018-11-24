@@ -10,12 +10,12 @@ class MyApp extends StatelessWidget {
       title: 'Welcome to Flutter 2, I am your title',
       debugShowCheckedModeBanner: false,
 
-//      theme: ThemeData(
+      theme: ThemeData(
 //        primaryColor: new Color(0xfff8faf8),
 //        primaryTextTheme: TextTheme(
 //          title: TextStyle(color: Colors.black, fontFamily: "Lato")
 //        )
-//      ),
+      ),
 
       home: new Home(title: 'Koala'),
     );
